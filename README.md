@@ -12,12 +12,12 @@ Add the following to your CMakeLists.txt file:
 ```
 include(FetchContent)
 
-set(MICROSTRAIN_TEST_FRAMEWORK_C "unity" CACHE STRING)
-set(MICROSTRAIN_TEST_FRAMEWORK_CPP "doctest" CACHE STRING)
+set(MICROSTRAIN_TEST_FRAMEWORK_C "unity")
+set(MICROSTRAIN_TEST_FRAMEWORK_CPP "doctest")
 
 FetchContent_Declare(microstrain_test
     GIT_REPOSITORY https://github.com/LORD-MicroStrain/microstrain_test.git
-    GIT_TAG 0.2.0
+    GIT_TAG 0.2.1
 )
 
 FetchContent_MakeAvailable(microstrain_test)
