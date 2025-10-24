@@ -31,6 +31,9 @@ Replace the frameworks and version git tag to what you would like to use.
 | C++      | [Doctest](https://github.com/doctest/doctest)    | `"doctest"`  |
 
 ## How to use
-Two backend frameworks can be used at once: one for *C* and one for *C++*.
+Two backend frameworks can be used at once for mixed projects: one for *C* and one for *C++*. You don't *need* to use two, however:
+* For C projects, a C++ framework doesn't need to be included.
+* For C++ projects, a C framework doesn't need to be included.
+* For mixed projects, one framework can be used for both.
 
 <!-- TODO: Add documentation for how to use -->
