@@ -31,6 +31,7 @@ Replace the frameworks and version git tag to what you would like to use.
 | C++      | [Doctest](https://github.com/doctest/doctest)    | `"doctest"`  |
 
 ## How to use
+### Framework backends
 Two backend frameworks can be used at once for mixed projects: one for *C* and one for *C++*. You don't *need* to use two, however:
 * For C projects, a C++ framework doesn't need to be included.
 * For C++ projects, a C framework doesn't need to be included.
@@ -44,7 +45,7 @@ To use a framework interface, include the respecting header in each test file:
 | C++      | `microstrain_test/microstrain_test.hpp` |
 
 
-### Example using the C interface
+#### Example using the C interface
 <!-- The rendering engine doesn't seem to recognize "C" -->
 ```c++
 #include <microstrain_test/microstrain_test.h>
@@ -55,7 +56,7 @@ MICROSTRAIN_TEST_CASE(a_test_suite, a_test_case)
 }
 ```
 
-### Example using the C++ interface
+#### Example using the C++ interface
 ```c++
 #include <microstrain_test/microstrain_test.hpp>
 
@@ -64,11 +65,15 @@ MICROSTRAIN_TEST_CASE(a_test_suite, a_test_case)
     // Test case code...
 }
 ```
+### Assertions and backend framework features
+* All assertions and features of the backend framework(s) can be used directly within each test case registration (definition).
+* The framework backend is included automatically.
+* Custom assertions can be used seamlessly alongside those from the backend framework(s).
 
-## Discovering tests to run
+### Discovering tests to run
 MicrostrainTest supports two methods for discovering tests: *Manual* and *Automatic*.
 
-### Automatic
+#### Automatic
 This is the preferred method. Tests simply need to be registered (defined) in test files, and then will be automatically discovered and run by CTest.
 
 To set up automatic test discovery, add the following to your CMakeLists.txt file
@@ -128,7 +133,7 @@ microstrain_discover_tests_cpp(
 )
 ```
 
-### Manual
+#### Manual
 To manually discover tests, add a main function for each test file:
 ```c++
 MICROSTRAIN_TEST_DEFAULT_SETUP();
