@@ -91,10 +91,10 @@ target_link_libraries(test_runner_cpp PRIVATE
     microstrain_test::cpp
 )
 
-# Includes the discovery script
+# Include the discovery script
 include(${microstrain_test_SOURCE_DIR}/scripts/DiscoverTests.cmake)
 
-# Automatically discovers and registers tests with CTest
+# Automatically discover and register tests with CTest
 microstrain_discover_tests_c(
     TARGET test_runner_c
     LABELS "C Tests!!!"
@@ -127,3 +127,28 @@ microstrain_discover_tests_cpp(
     SEQUENTIAL
 )
 ```
+
+### Manual
+To manually discover tests, add a main function for each test file:
+```c++
+MICROSTRAIN_TEST_DEFAULT_SETUP();
+
+// Test registration (definition) code...
+
+int main()
+{
+    MICROSTRAIN_TEST_BEGIN();
+    
+    RUN_MICROSTRAIN_TEST_CASE(suite1, test1);
+    RUN_MICROSTRAIN_TEST_CASE(suite1, test2);
+    
+    RUN_MICROSTRAIN_TEST_CASE(suite2, test1);
+    RUN_MICROSTRAIN_TEST_CASE(suite2, test2);
+    
+    // Add test run calls for all other tests in the file...
+    
+    return MICROSTRAIN_TEST_END();
+}
+```
+
+Then register a CTest test for each test.
