@@ -14,14 +14,15 @@ set(SUPPORTED_FRAMEWORKS_CPP
     "doctest"
 )
 
-set(FRAMEWORK_C "" CACHE STRING "Backend framework for C")
-set(FRAMEWORK_CPP "" CACHE STRING "Backend framework for C++")
+# These should be set before installing in an external project
+set(MICROSTRAIN_TEST_FRAMEWORK_C "" CACHE STRING "Backend framework for C")
+set(MICROSTRAIN_TEST_FRAMEWORK_CPP "" CACHE STRING "Backend framework for C++")
 
-if(NOT FRAMEWORK_C IN_LIST SUPPORTED_FRAMEWORKS_C)
+if(NOT MICROSTRAIN_TEST_FRAMEWORK_C IN_LIST SUPPORTED_FRAMEWORKS_C)
     message(FATAL_ERROR "Backend not supported for C! Supported backends are: ${SUPPORTED_BACKENDS_C}")
 endif()
 
-if(NOT FRAMEWORK_CPP IN_LIST SUPPORTED_FRAMEWORKS_CPP)
+if(NOT MICROSTRAIN_TEST_FRAMEWORK_CPP IN_LIST SUPPORTED_FRAMEWORKS_CPP)
     message(FATAL_ERROR "Backend not supported for C++! Supported backends are: ${SUPPORTED_BACKENDS_CPP}")
 endif()
 
@@ -86,7 +87,7 @@ target_compile_options(microstrain_test_cpp INTERFACE
 # (C) Unity setup
 # ---------------------------------------------------------------
 
-if(FRAMEWORK_C STREQUAL "unity")
+if(MICROSTRAIN_TEST_FRAMEWORK_C STREQUAL "unity")
     include(scripts/internal/InstallUnity.cmake)
 
     target_compile_definitions(microstrain_test_c INTERFACE
@@ -102,7 +103,7 @@ endif()
 # (C++) Doctest setup
 # ---------------------------------------------------------------
 
-if(FRAMEWORK_CPP STREQUAL "doctest")
+if(MICROSTRAIN_TEST_FRAMEWORK_CPP STREQUAL "doctest")
     include(scripts/internal/InstallDoctest.cmake)
 
     target_compile_definitions(microstrain_test_cpp INTERFACE
