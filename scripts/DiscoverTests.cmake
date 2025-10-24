@@ -89,7 +89,7 @@ function(microstrain_discover_tests_cpp)
         ${ARGN}
     )
 
-    if(MICROSTRAIN_TEST_USE_DOCTEST)
+    if(MICROSTRAIN_TEST_FRAMEWORK_CPP STREQUAL "doctest")
         include(${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake)
 
         if(ARG_SEQUENTIAL)
