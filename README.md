@@ -36,4 +36,30 @@ Two backend frameworks can be used at once for mixed projects: one for *C* and o
 * For C++ projects, a C framework doesn't need to be included.
 * For mixed projects, one framework can be used for both.
 
-<!-- TODO: Add documentation for how to use -->
+To use a framework interface, include the respecting header in each test file:
+
+| Language | Header                                  |
+|----------|-----------------------------------------| 
+| C        | `microstrain_test/microstrain_test.h`   |
+| C++      | `microstrain_test/microstrain_test.hpp` |
+
+
+### Example using the C interface
+```
+#include <microstrain_test/microstrain_test.h>
+
+MICROSTRAIN_TEST_CASE(a_test_suite, a_test_case)
+{
+    // Test case code...
+}
+```
+
+### Example using the C++ interface
+```
+#include <microstrain_test/microstrain_test.hpp>
+
+MICROSTRAIN_TEST_CASE(a_test_suite, a_test_case)
+{
+    // Test case code...
+}
+```
