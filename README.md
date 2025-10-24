@@ -12,8 +12,8 @@ Add the following to your CMakeLists.txt file:
 ```
 include(FetchContent)
 
-set(MICROSTRAIN_TEST_FRAMEWORK_C "unity")
-set(MICROSTRAIN_TEST_FRAMEWORK_CPP "doctest")
+set(MICROSTRAIN_TEST_FRAMEWORK_C "unity" CACHE STRING "" FORCE)
+set(MICROSTRAIN_TEST_FRAMEWORK_CPP "doctest" CACHE STRING "" FORCE)
 
 FetchContent_Declare(microstrain_test
     GIT_REPOSITORY https://github.com/LORD-MicroStrain/microstrain_test.git
