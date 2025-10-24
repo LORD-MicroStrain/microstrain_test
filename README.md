@@ -17,7 +17,7 @@ set(MICROSTRAIN_TEST_FRAMEWORK_CPP "doctest" CACHE STRING "" FORCE)
 
 FetchContent_Declare(microstrain_test
     GIT_REPOSITORY https://github.com/LORD-MicroStrain/microstrain_test.git
-    GIT_TAG 0.2.2
+    GIT_TAG 0.2.4
 )
 
 FetchContent_MakeAvailable(microstrain_test)
