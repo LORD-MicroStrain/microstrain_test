@@ -19,11 +19,11 @@ set(MICROSTRAIN_TEST_FRAMEWORK_C "" CACHE STRING "Backend framework for C")
 set(MICROSTRAIN_TEST_FRAMEWORK_CPP "" CACHE STRING "Backend framework for C++")
 
 if(MICROSTRAIN_TEST_FRAMEWORK_C AND NOT MICROSTRAIN_TEST_FRAMEWORK_C IN_LIST SUPPORTED_FRAMEWORKS_C)
-    message(FATAL_ERROR "Backend not supported for C! Supported backends are: ${SUPPORTED_BACKENDS_C}")
+    message(FATAL_ERROR "Backend not supported for C! Supported backends are: ${SUPPORTED_FRAMEWORKS_C}")
 endif()
 
 if(MICROSTRAIN_TEST_FRAMEWORK_CPP AND NOT MICROSTRAIN_TEST_FRAMEWORK_CPP IN_LIST SUPPORTED_FRAMEWORKS_CPP)
-    message(FATAL_ERROR "Backend not supported for C++! Supported backends are: ${SUPPORTED_BACKENDS_CPP}")
+    message(FATAL_ERROR "Backend not supported for C++! Supported backends are: ${SUPPORTED_FRAMEWORKS_CPP}")
 endif()
 
 # ---------------------------------------------------------------
