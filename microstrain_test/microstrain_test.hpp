@@ -4,7 +4,7 @@
 #pragma once
 
 #ifdef MICROSTRAIN_TEST_USE_DOCTEST
-    #include "doctest_wrappers.hpp"
+    #include "internal/doctest_wrappers.hpp"
 #endif
 
 // -----------------------------------------------------------------------------------------------------------

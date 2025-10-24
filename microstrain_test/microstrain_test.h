@@ -4,7 +4,7 @@
 #pragma once
 
 #ifdef MICROSTRAIN_TEST_USE_UNITY
-    #include "unity_wrappers.h"
+    #include "internal/unity_wrappers.h"
 #endif
 
 // -----------------------------------------------------------------------------------------------------------
