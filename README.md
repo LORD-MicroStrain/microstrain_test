@@ -45,7 +45,8 @@ To use a framework interface, include the respecting header in each test file:
 
 
 ### Example using the C interface
-```
+<!-- The rendering engine doesn't seem to recognize "C" -->
+```c++
 #include <microstrain_test/microstrain_test.h>
 
 MICROSTRAIN_TEST_CASE(a_test_suite, a_test_case)
@@ -55,11 +56,74 @@ MICROSTRAIN_TEST_CASE(a_test_suite, a_test_case)
 ```
 
 ### Example using the C++ interface
-```
+```c++
 #include <microstrain_test/microstrain_test.hpp>
 
 MICROSTRAIN_TEST_CASE(a_test_suite, a_test_case)
 {
     // Test case code...
 }
+```
+
+## Discovering tests to run
+MicrostrainTest supports two methods for discovering tests: *Manual* and *Automatic*.
+
+### Automatic
+This is the preferred method. Tests simply need to be registered (defined) in test files, and then will be automatically discovered and run by CTest.
+
+To set up automatic test discovery, add the following to your CMakeLists.txt file
+```cmake
+# Add executables for running tests
+add_executable(test_runner_c
+    # Test file sources...
+)
+add_executable(test_runner_cpp
+    # Test file sources...
+)
+
+# Link all required dependencies for the executables
+target_link_libraries(test_runner_c PRIVATE
+    # Dependencies...
+    microstrain_test::c
+)
+target_link_libraries(test_runner_cpp PRIVATE
+    # Dependencies...
+    microstrain_test::cpp
+)
+
+# Includes the discovery script
+include(${microstrain_test_SOURCE_DIR}/scripts/DiscoverTests.cmake)
+
+# Automatically discovers and registers tests with CTest
+microstrain_discover_tests_c(
+    TARGET test_runner_c
+    LABELS "C Tests!!!"
+)
+microstrain_discover_tests_cpp(
+    TARGET test_runner_cpp
+    LABELS "C++ Tests!!!"
+)
+```
+
+The `LABELS` argument allows you to specify additional labels for filtering tests with CTest.
+
+Additionally, there are two modes to run tests in an executable: *sequential* and *parallel*. 
+
+| Mode       | Description                                                                                                                                                                                 |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Parallel   | The default mode, it will run all tests in the executable in parallel (if CTest is run with `-j`).                                                                                          |
+| Sequential | When explicitly set, it will run the tests in each test file in order, one at a time. If CTest is **not** run with `-j`, then all tests in the executable will run in order, one at a time. |
+
+To set the mode to *sequential*, add the following argument to the test discovery function:
+```cmake
+microstrain_discover_tests_c(
+    TARGET test_runner_c
+    LABELS "C Tests running sequentially!!!"
+    SEQUENTIAL
+)
+microstrain_discover_tests_cpp(
+    TARGET test_runner_cpp
+    LABELS "C++ Tests running sequentially!!!"
+    SEQUENTIAL
+)
 ```
