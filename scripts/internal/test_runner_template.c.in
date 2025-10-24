@@ -1,4 +1,3 @@
-/* Template file used to generate the test runner for a test executable */
 #include <string.h>
 
 #include <microstrain_test/microstrain_test.h>
