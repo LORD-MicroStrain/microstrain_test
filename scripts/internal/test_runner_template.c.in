@@ -22,6 +22,6 @@ int main(int argc, char** argv) {
 
     (void)test_filter; /* Suppress unused variable warning if only one test */
 
-@TEST_FILTERING@
+    @TEST_FILTERING@
     return MICROSTRAIN_TEST_END();
 }
