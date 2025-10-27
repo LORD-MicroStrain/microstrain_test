@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 project(microstrain_test
-    VERSION 0.2.6
+    VERSION 0.2.7
 )
 
 # ---------------------------------------------------------------
