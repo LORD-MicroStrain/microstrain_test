@@ -94,6 +94,13 @@
     TEST_ASSERT_FALSE(condition)
 
 /*
+ * String assertions
+ */
+
+#define ASSERT_EQUAL_CHAR(actual, expected) \
+    TEST_ASSERT_EQUAL_CHAR(expected, actual)
+
+/*
  * Integer assertions
  */
 
